@@ -98,7 +98,12 @@ order by InvoicesYear, InvoicesMonth, StockItemName
 то этот месяц также отображался бы в результатах, но там были нули.
 */
 -- 3-ий запрос с месяцами, где не было продаж
-select InvoicesYearCalendar, InvoicesMonthCalendar, StockItemName, isnull(InvoicesAmount,0), InvoicesMinDate, isnull(InvoicesQuantity,0)
+select InvoicesYearCalendar
+	, InvoicesMonthCalendar
+	, StockItemName
+	, isnull(InvoicesAmount,0)
+	, InvoicesMinDate
+	, isnull(InvoicesQuantity,0)
 from (values(2013, 1),(2013, 2),(2013, 3),(2013, 4),(2013, 5),(2013, 6),(2013, 7),(2013, 8),(2013, 9),(2013, 10),(2013, 11),(2013, 12)) as tbl1 (InvoicesYearCalendar, InvoicesMonthCalendar)
 left join (
 select year(i.[InvoiceDate]) as InvoicesYear
